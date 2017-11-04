@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Momota.pw&#8314;</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta name="theme-color" content="#00ff00">
+  </head>
+  <body>
+    <header class="global-header">
+      <h1 class="title"><a href="index.html">Momota.pw<sup>+</sup></a></h1>
+      <p>Something about web and other.</p>
+    </header>
+    <article class="main">
+      <header>
+        <h2>Rubyであとから文字列展開してくれるやつ作った</h2>
+        <dl>
+          <dt>Published</dt>
+          <dd><time datetime="2015-04-19">2015.04.19</time></dd>
+        </dl>
+      </header>
+      <main>
+        <pre><code class="language-Ruby"
+          ><b class="blue">class</b> <b class="red">String</b><br
+         />  <b class="blue">def</b> expansion *args<br
+         />    <b class="blue">return self</b>.<b class="green">clone</b>.expansion! *args<br
+         />  <b class="blue">end</b><br
+         />  <b class="blue">def</b> expansion! bi = <b class="green">binding</b><br
+         />    <b class="blue">if self</b> =~ /#/<br
+         />      <b class="blue">self</b>.<b class="green">replace</b><!--
+        -->(bi.<b class="green">eval</b>(&gt;&gt;-EOS.<!--
+        --><b class="green">gsub</b> /^\x20{0,10}/, '').<b class="green">sub</b>(/\n$/, ''))<br
+         />        &gt;&gt;EndOfScriptByMomota<br
+         />          #{<b class="blue">self</b>.<b class="green">gsub</b>(/\\(?![^\\])/, '\\'*4)}<br
+         />        EndOfScriptByMomota<br
+         />      EOS<br
+         />    <b class="blue">else</b><br
+         />      <b class="blue">self</b><br
+         />    <b class="blue">end</b><br
+         />  <b class="blue">end</b><br
+         /><b class="blue">end</b></code></pre>
+        <p>とりあえずなぜこういうのがなかったのか疑問。<br />
+        Hamlとかの変数展開ってどうやってるの</p>
+      </main>
+    </article>
+    <nav>
+      <h2>アーカイブ</h2>
+      <ul>
+        <li><a href="2015-04-01.html">サイトを公開しました。</a></li>
+        <li><a href="2015-04-01-2.html">とりあえずASTの内部表現が完成しましたー</a></li>
+        <li><a href="2015-04-19.html">Rubyであとから文字列展開してくれるやつ作った</a></li>
+      </ul>
+    </nav>
+    <footer>©2015 Momota Henka.</footer>
+  </body>
+</html>

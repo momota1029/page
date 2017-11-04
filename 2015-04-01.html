@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>サイトを公開しました。 - Momota.pw&#8314;</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="global-header">
+      <h1 class="title"><a href="index.html">Momota.pw<sup>+</sup></a></h1>
+      <p>Something about web and other.</p>
+    </header>
+    <article class="main">
+      <header>
+        <h2>サイトを公開しました。</h2>
+        <dl>
+          <dt>Published</dt>
+          <dd><time datetime="2015-04-01">2015.04.01</time></dd>
+        </dl>
+      </header>
+      <main>
+        <p>前々からドメインを慣れさせるためにサイトのページ自体は存在していて、見ることはできたのですがきちんとした形で公開とはなりませんでした。去年の八月に公開するよと
+        言ったまま、何もせずに1年が経とうとし、このままでは良くないということでベタと言う形でサイトを公開することとなります。</p>
+        <p>もちろん、ブログのようにするわけにもいかないので、トップページだけ内容を変え、他のページをストックしていくという地道な更新方法となります。</p>
+        <p>マークアップ言語の作成も順調ですので、このまま行けば数週間後には公式としてサイト公開にこぎつけることができるでしょう。</p>
+        <p>ここでマークアップ言語の紹介とさせていただきたい。</p>
+        <section>
+          <h3>実装途中マークアップ、「Momota_down(仮)」のご紹介</h3>
+          <p>拡張可能な言語というのはよくあるものですが、markdownはそもそもの拡張ができません。
+          それだけでなく拡張可能なマークアップ言語というのは他の記法より劣る拡張記法しか考えられませんでした。</p>
+          <p>そこで思いつくのが、「基板を作り、通常の言語も拡張記法と同程度の記述で実現し、優先度もハック可能にする」というもの。
+          ASTを生成して、そこからの作業をオプションで書き換え可能にするのです。</p>
+          <p><small>※まあ略称が「mmd」なのでこの名称「(仮)」なんですがね</small></p>
+          <pre><code><b class=mark
+            >---<br
+           />lang: ja<br
+           />perl: aaa.pl<br
+           />title: 特に意味は無いのですが<br
+           />kyoko: on<br
+           />css:<br
+           /> - normalize.css<br
+           />---</b><br
+           /><b class=green>#=</b>Momota.pw^+^<br
+           /><b class=green>#:</b>Something [new](#) about [web](#) and [others](#).<br
+           /><b class=green>#</b>{<br
+           />  <b class=green>+</b>[top](#)<br
+           />  <b class=green>+</b>[tech](#)<br
+           />  <b class=green>++</b>[Perl](#)<br
+           />  <b class=green>++</b>[JS](#)<br
+           />  <b class=green>+</b>[Illust](#)<br
+           />}<br
+           /><br
+           /><b class=green>##</b>この記法の意義について<br
+           />まあ、このサイトを始めるにあたって、色々話したいことはあります。まあそういうことです。<br
+           /><br
+           />段落を分けることによってきちんと学術的にテキストを書いていくことが出来るだけでなく、改行もしてくれるので日本語的なサポートが可能になります。<br
+           />HTMLには、様々な側面があり、それらを一つの記法で記述できたら、どんなにか面白いだろうなあと思ったのです。<br
+           /><b class=green>+</b>特殊行であり特殊段落でもあるようなリストは至極処理が大変です。<br
+           /><b class=green>+-</b>数字リストなどをこういうふうにすることもやはり可能ではありますが段落も考えてそういうことをし始めると大変になります。<br
+           />段落を分けてしまえばリストはそこで区切られ、明示的な区別がされます。<br
+           /><b class=green>></b>引用をすることも可能です。<br
+           />段落で分けることも、<br
+           />~~~down<br
+           />  main{<br
+           />  }<br
+           />~~~<br
+           /><b class=green>></b>行でどうにかすることも、<br
+           /><b class=green>></b>いくらでも\{可能です。<br
+           /><b class=green>!</b>もちろん、悪いことを考えているわけではありません。<br
+           />面白いことを考えてこれらを作成したわけです。<br
+           /><b class=green>###!</b>注意<br
+           />注意的文書としていくつかの記法を制定するということになるわけです。面倒くさいなあ。<br
+           /><b class=green>##</b><br
+           /><br
+           /><br
+           />main -> arti<b class=blue>[::aa]</b>cle{<br
+           />  <b class=green>#></b><b class=blue>[::title]</b><b class=red>::articles</b><br
+           />}<br
+           /><br
+           /><b class=green>##></b><b class=blue>[::title]</b><b class=red>::article</b><br
+           /><b class=green>##</b><b class=blue>[:time:time:yyyy.mm.dd]</b><br
+           /><b class=blue>[::content]</b>なにもないだろうなあ<b class=green>##</b><br
+           /><br
+           /><br
+           /><b class=green>*</b>©2015 Momota Henka.</code></pre>
+          <p>このように指定されたところから行末の「<code class=red>::article</code>」などというところをラベルとして扱い、
+          「<code class=green>#=</code>」、「<code class=green>></code>」などで指定したところを記法として扱い、これらは追加ができます。</p>
+          <p>別の記法「among>>>」のような記法を付け足したり、それを「%」などの記号にすることも可能です。</p>
+          <p>「Momota_down(仮)」の面白いところはここだけではないです。</p>
+          <section>
+            <h4>テンプレートエンジンとして展開できる</h4>
+            <p>テンプレートエンジンとしてこれらのマークアップが使え、かつブログの記法と左程変わらないとしたら、これからの実装はもっと楽になるばかりでなく、
+            だれでも簡単にブログがperlで綺麗に作れる時代となるかもしれません。</p>
+            <p>それを考え、「Momota_down」には「テンプレート展開機能」というものをつけました。</p>
+            <p>「<code class=blue>[::title]</code>」などで表されたところがそれです。これは変数などを外部から呼べるコマンド群を表しています。</p>
+            <p>ラベルと合わせることで外部から様々な呼び出しをし、マクロ的展開もできるようになるでしょう。</p>
+          </section>
+          <section>
+            <h4>日本語に最適化された段落概念</h4>
+            <p>行を段落として考えます。行内での改行はすべて段落を変えたものとして扱います。これにより、ワープロから日本語の文章をそのままコピペして作業することが容易になります。</p>
+            <p>そのため、多くの記法は段落の頭に置くこととなります。もちろん、インライン的な記法にも対応しているので安心です。</p>
+          </section>
+        </section>
+        <p>なんか途中からマークアップ言語の説明になってしまいました。</p>
+        <p>ちなみにこのサイトのマークアップ方式はMomota_downで出力されたものと同じであることを想定しています。ぜひソースを御覧ください。</p>
+        <section>
+          <h3>絵も描きます</h3>
+          <p>この前ついにFireAlpacaというソフトで書いた絵が100枚を超えまして、落描きというのも継続が力になればいいなあと思っています。</p>
+          <p>というわけなので、これからこのサイトには落描きを載せていくことになります。</p>
+          <figure>
+            <img src=alpaca110.png alt=""  /><img src=alpaca114.png alt="" />
+            <figcaption>らくがきたち</figcaption>
+          </figure>
+        </section>
+      </main>
+      <footer><a href="index.html">トップに戻る</a></footer>
+    </article>
+    <footer>©2015 Momota Henka.</footer>
+  </body>
+</html>
